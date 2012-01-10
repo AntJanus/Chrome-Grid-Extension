@@ -1,5 +1,5 @@
-{
-  "name": "Gridr",
+{ 
+"name": "Gridr",
   "version": "1.0",
   "description": "The first extension that I made.",
   "browser_action": {
@@ -9,7 +9,7 @@
   },
   "permissions": [
   "tabs",
-  "http://*/"
-  
-]
+  "http://*/*",
+  "https://*/*"
+  ]
 }

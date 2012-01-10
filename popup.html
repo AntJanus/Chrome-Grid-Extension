@@ -29,7 +29,8 @@ function restore_options() {
 }
 
 function showGrid(){
-
+gridSize = localStorage.getItem('gridSize');
+chrome.tabs.executeScript(null,{code:"document.body.style.backgroundImage = '-webkit-linear-gradient(#eee .05em, transparent .05em)'; document.body.style.backgroundPosition = '100% 0%'; document.body.style.backgroundSize = '100% " + gridSize +"';"});
 }
 </script>
 </head>
@@ -38,9 +39,9 @@ function showGrid(){
 Select Grid Size:
 <label for="gridSize">Grid Size (include px, em, or %)</label>
 <input type="text" name="gridSize" id="gridSize" />
-<input type="button" value="submit" onclick="saveOptions()" />
+<input type="button" value="save" onclick="saveOptions()" />
 <span id="status"></span>
-<a href="javascript:showGrid();">Show Grid</a>
+<a href="#" onclick="showGrid();" id="gridFire">Show Grid</a>
 <span id="currentSize">Current Size:
 <script type="text/javascript">
 document.write(localStorage.getItem('gridSize'));
