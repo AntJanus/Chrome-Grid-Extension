@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+function saveOptions() {
+  var bgrSize = document.getElementById("gridSize").value;
+  localStorage.setItem('gridSize',bgrSize);
+
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "Options Saved.";
+  setTimeout(function() {
+    status.innerHTML = "";
+  }, 750);
+  var currentSize = document.getElementById("currentSize");
+  currentSize.innerHTML = bgrSize;
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  var bgrSize = localStorage.getItem('gridSize');
+	if(!bgrSize){
+		bgrSize = "1.5em";
+	}
+	document.getElementById("gridSize").value = bgrSize;
+}
+
+function showGrid(){
+
+}
+</script>
+</head>
+
+<body onload="restore_options()">
+Select Grid Size:
+<label for="gridSize">Grid Size (include px, em, or %)</label>
+<input type="text" name="gridSize" id="gridSize" />
+<input type="button" value="submit" onclick="saveOptions()" />
+<span id="status"></span>
+<a href="javascript:showGrid();">Show Grid</a>
+<span id="currentSize">Current Size:
+<script type="text/javascript">
+document.write(localStorage.getItem('gridSize'));
+</script>
+</span>
+</body>
+</html>
